@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema-01.json",
+  "country": "ro",
+  "name": "eMAG",
+  "url": "https://www.emag.ro/",
+  "currency": "RON",
+
+  "lists": [
+    {
+      "language": "ro",
+      "list": {
+        "productType": "smartphone",
+        "url": "https://www.emag.ro/telefoane-mobile/c",
+        "paginate": {
+          "next": "#listing-paginator li:last-child"
+        },
+        "item": "#card_grid .card-item",
+        "product": {
+          "url": ".card-heading > a@href",
+          "title": ".product-title-zone > a@title",
+          "image": ".card-heading .thumbnail img@data-src",
+          "price": {
+            "parent": "button.add-to-favorites@data-product",
+            "type": "json",
+            "selector": "price"
+          }
+        }
+      }
+    }
+  ]
+}

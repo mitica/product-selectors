@@ -1,3 +1,3 @@
-# init-ts-module
+# Product selectors for web scraping.
 
-Main files of a TypeScript npm module.
+A collection of HTML selectors for product web scraping.

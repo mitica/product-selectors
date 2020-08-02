@@ -1,7 +1,7 @@
 {
-  "name": "init-ts-module",
-  "version": "0.2.0",
-  "description": "Init TypeScript npm module",
+  "name": "product-selectors",
+  "version": "0.1.0",
+  "description": "Product selectors for web scraping",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -20,18 +20,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mitica/init-ts-module.git"
+    "url": "git+https://github.com/mitica/product-selectors.git"
   },
   "keywords": [
-    "ts",
-    "init-module"
+    "product",
+    "product-selectors",
+    "scraping"
   ],
   "author": "Dumitru Cantea",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mitica/init-ts-module/issues"
+    "url": "https://github.com/mitica/product-selectors/issues"
   },
-  "homepage": "https://github.com/Mitica/init-ts-module#readme",
+  "homepage": "https://github.com/mitica/product-selectors#readme",
   "devDependencies": {
     "@types/node": "latest",
     "rimraf": "3.0.2",

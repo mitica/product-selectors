@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+
+  "type": "object",
+  "properties": {
+    "url": { "type": "string", "format": "url" },
+    "name": { "type": "string", "minLength": 2, "maxLength": 50 },
+    "country": { "type": "string", "pattern": "^[a-z]{2}$" },
+    "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+    "lists": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "language": { "type": "string", "pattern": "^[a-z]{2}$" },
+          "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+          "list": { "$ref": "#/definitions/productList" }
+        },
+        "required": ["language", "list"]
+      },
+      "uniqueItems": true,
+      "maxItems": 100
+    }
+  },
+  "required": ["url", "name", "country", "lists"],
+  "additionalProperties": true,
+
+  "definitions": {
+    "productList": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Optional list name." },
+        "productType": { "$ref": "#/definitions/productType" },
+        "url": { "type": "string", "format": "url" },
+        "paginate": { "$ref": "#/definitions/paginate" },
+        "item": { "$ref": "#/definitions/selector" },
+        "product": {
+          "$ref": "#/definitions/productSelector",
+          "required": ["url"]
+        }
+      },
+      "required": ["productType", "url"]
+    },
+
+    "productType": { "type": "string", "enum": ["smartphone"] },
+
+    "paginate": {
+      "type": "object",
+      "properties": {
+        "next": { "$ref": "#/definitions/selector" }
+      },
+      "required": ["next"]
+    },
+
+    "productSelector": {
+      "type": "object",
+      "properties": {
+        "url": { "$ref": "#/definitions/selector" },
+        "title": { "$ref": "#/definitions/selector" },
+        "description": { "$ref": "#/definitions/selector" },
+        "image": { "$ref": "#/definitions/selector" },
+        "price": { "$ref": "#/definitions/priceSelector" },
+        "currency": { "$ref": "#/definitions/selector" }
+      },
+      "required": ["title", "price"]
+    },
+
+    "priceSelector": {
+      "oneOf": [
+        { "$ref": "#/definitions/selector" },
+        {
+          "type": "object",
+          "properties": {
+            "price": { "$ref": "#/definitions/selector" },
+            "integerPart": { "$ref": "#/definitions/selector" },
+            "decimalPart": { "$ref": "#/definitions/selector" }
+          },
+          "oneOf": [
+            { "required": ["price"] },
+            { "required": ["integerPart", "decimalPart"] }
+          ]
+        }
+      ]
+    },
+
+    "selector": {
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string", "enum": ["html", "json"] },
+            "parent": { "type": "string" },
+            "selector": { "type": "string" }
+          },
+          "required": ["selector"]
+        }
+      ]
+    }
+  }
+}
