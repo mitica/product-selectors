@@ -14,7 +14,8 @@
     "postversion": "git push --follow-tags",
     "prepublishOnly": "npm run tsc && npm run clean-test-code",
     "clean": "rimraf ./lib",
-    "clean-test-code": "rimraf ./lib/**/*.test.js && rimraf ./lib/**/*.test.d.ts"
+    "clean-test-code": "rimraf ./lib/**/*.test.js && rimraf ./lib/**/*.test.d.ts",
+    "check-data": "npm run clean && npm run tsc && node lib/check-data.js"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -36,6 +37,8 @@
   "homepage": "https://github.com/mitica/product-selectors#readme",
   "devDependencies": {
     "@types/node": "latest",
+    "@types/node-fetch": "^2.5.7",
+    "node-fetch": "^2.6.0",
     "rimraf": "3.0.2",
     "typescript": "latest"
   },

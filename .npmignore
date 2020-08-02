@@ -1,5 +1,6 @@
 
 *.test.js
 src/
+lib/check-data.js
 tsconfig.json
 .travis.yml
