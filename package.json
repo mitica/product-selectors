@@ -1,0 +1,40 @@
+{
+  "name": "init-ts-module",
+  "version": "0.2.0",
+  "description": "Init TypeScript npm module",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "pretest": "npm run clean && npm run tsc",
+    "posttest": "npm run clean-test-code",
+    "tsc": "tsc",
+    "tscw": "tsc -w",
+    "preversion": "npm run tsc",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run tsc && npm run clean-test-code",
+    "clean": "rimraf ./lib",
+    "clean-test-code": "rimraf ./lib/**/*.test.js && rimraf ./lib/**/*.test.d.ts"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mitica/init-ts-module.git"
+  },
+  "keywords": [
+    "ts",
+    "init-module"
+  ],
+  "author": "Dumitru Cantea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mitica/init-ts-module/issues"
+  },
+  "homepage": "https://github.com/Mitica/init-ts-module#readme",
+  "devDependencies": {
+    "@types/node": "latest",
+    "rimraf": "3.0.2",
+    "typescript": "latest"
+  }
+}
