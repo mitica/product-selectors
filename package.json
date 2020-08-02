@@ -38,11 +38,9 @@
   "devDependencies": {
     "@types/node": "latest",
     "@types/node-fetch": "^2.5.7",
+    "ava": "^3.11.0",
     "node-fetch": "^2.6.0",
     "rimraf": "3.0.2",
     "typescript": "latest"
-  },
-  "dependencies": {
-    "ava": "^3.11.0"
   }
 }
