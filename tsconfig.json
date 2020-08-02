@@ -14,7 +14,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowJs": false,
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true
   },
   "formatCodeOptions": {
     "indentSize": 2,

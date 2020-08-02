@@ -7,6 +7,7 @@
   "scripts": {
     "pretest": "npm run clean && npm run tsc",
     "posttest": "npm run clean-test-code",
+    "test": "ava --no-cache --verbose lib/**/*.test.js",
     "tsc": "tsc",
     "tscw": "tsc -w",
     "preversion": "npm run tsc",
@@ -37,5 +38,8 @@
     "@types/node": "latest",
     "rimraf": "3.0.2",
     "typescript": "latest"
+  },
+  "dependencies": {
+    "ava": "^3.11.0"
   }
 }

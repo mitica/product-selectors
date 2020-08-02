@@ -39,7 +39,7 @@
           "required": ["url"]
         }
       },
-      "required": ["productType", "url"]
+      "required": ["productType", "url", "item", "product"]
     },
 
     "productType": { "type": "string", "enum": ["smartphone"] },
