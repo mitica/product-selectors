@@ -3,6 +3,11 @@
 
   "type": "object",
   "properties": {
+    "version": {
+      "type": "string",
+      "const": "01",
+      "description": "Schema version"
+    },
     "url": { "type": "string", "format": "url" },
     "name": { "type": "string", "minLength": 2, "maxLength": 50 },
     "country": { "type": "string", "pattern": "^[a-z]{2}$" },
@@ -20,12 +25,29 @@
       },
       "uniqueItems": true,
       "maxItems": 100
+    },
+    "products": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/productItem" },
+      "uniqueItems": true,
+      "maxItems": 100
     }
   },
-  "required": ["url", "name", "country", "lists"],
+  "required": ["version", "url", "name", "country"],
   "additionalProperties": true,
 
   "definitions": {
+    "productItem": {
+      "type": "object",
+      "properties": {
+        "urlPattern": { "type": "string" },
+        "product": {
+          "$ref": "#/definitions/productSelector"
+        }
+      },
+      "required": ["product"]
+    },
+
     "productList": {
       "type": "object",
       "properties": {
@@ -47,7 +69,8 @@
     "paginate": {
       "type": "object",
       "properties": {
-        "next": { "$ref": "#/definitions/selector" }
+        "next": { "$ref": "#/definitions/selector" },
+        "limit": { "type": "integer", "minimum": 0 }
       },
       "required": ["next"]
     },
@@ -83,19 +106,6 @@
       ]
     },
 
-    "selector": {
-      "oneOf": [
-        { "type": "string" },
-        {
-          "type": "object",
-          "properties": {
-            "type": { "type": "string", "enum": ["html", "json"] },
-            "parent": { "type": "string" },
-            "selector": { "type": "string" }
-          },
-          "required": ["selector"]
-        }
-      ]
-    }
+    "selector": { "type": "string" }
   }
 }

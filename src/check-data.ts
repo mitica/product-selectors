@@ -1,10 +1,9 @@
 import fetch from "node-fetch";
 import { getSupportedCountries, getDataNames, getData } from "./index";
-import { SelectorsData } from "./types";
 
 const countries = getSupportedCountries();
 
-const checkData = async (data: SelectorsData) => {
+const checkData = async (data: any) => {
   for (const { list } of data.lists) {
     let result = "✓";
     try {

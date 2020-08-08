@@ -1,7 +1,6 @@
 import fs from "fs";
 import { join } from "path";
 import { promisify } from "util";
-import { SelectorsData } from "./types";
 
 const readFile = promisify(fs.readFile);
 
@@ -60,12 +59,10 @@ export type GetDataOptions = {
 export async function getData({
   country,
   name
-}: GetDataOptions): Promise<SelectorsData> {
+}: GetDataOptions): Promise<string> {
   checkFileName(name);
 
   const filePath = join(__dirname, "..", "data", country, `${name}.json`);
 
-  const content = await readFile(filePath, "utf8");
-
-  return JSON.parse(content) as SelectorsData;
+  return readFile(filePath, "utf8");
 }
