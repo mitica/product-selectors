@@ -1,5 +1,6 @@
 import { extractList } from "product-extractor";
 import { getSupportedCountries, getDataNames, getData } from "./index";
+import { SelectorsData } from "./types";
 
 const countries = getSupportedCountries();
 
@@ -12,7 +13,7 @@ export const asyncIteratorToArray = async <T>(iterator: AsyncIterable<T>) => {
   return list;
 };
 
-const checkDataLists = async (data: any) => {
+const checkDataLists = async (data: SelectorsData) => {
   for (const { list } of data.lists) {
     let result = "✓";
     try {
@@ -21,7 +22,7 @@ const checkDataLists = async (data: any) => {
           itemSelector: list.item,
           schemaVersion: data.version,
           productSelector: list.product
-        })
+        } as any)
       );
       result = `${results.length} products`;
     } catch (error) {
@@ -37,8 +38,7 @@ async function check() {
     const names = getDataNames({ country });
     for (const name of names) {
       console.log(`\t${name}:`);
-      const json = await getData({ country, name });
-      const data = JSON.parse(json);
+      const data = await getData({ country, name });
       await checkDataLists(data);
     }
   }

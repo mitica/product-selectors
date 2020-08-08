@@ -14,8 +14,7 @@ countries.forEach((country) => {
   const names = getDataNames({ country });
   names.forEach((name) =>
     test(`getData ${country}/${name}`, async (t) => {
-      const json = await getData({ country, name });
-      const data = JSON.parse(json);
+      const data = await getData({ country, name });
       t.truthy(data);
       t.true("version" in data);
       t.true("name" in data);
