@@ -1,14 +1,29 @@
-import fetch from "node-fetch";
+import { extractList } from "product-extractor";
 import { getSupportedCountries, getDataNames, getData } from "./index";
 
 const countries = getSupportedCountries();
 
-const checkData = async (data: any) => {
+export const asyncIteratorToArray = async <T>(iterator: AsyncIterable<T>) => {
+  const list: T[] = [];
+  for await (const item of iterator) {
+    list.push(item);
+  }
+
+  return list;
+};
+
+const checkDataLists = async (data: any) => {
   for (const { list } of data.lists) {
     let result = "✓";
     try {
-      const { status } = await fetch(list.url);
-      result = status === 200 ? result : status.toString();
+      const results = await asyncIteratorToArray(
+        extractList(list.url, {
+          itemSelector: list.item,
+          schemaVersion: data.version,
+          productSelector: list.product
+        })
+      );
+      result = `${results.length} products`;
     } catch (error) {
       result = error.message;
     }
@@ -22,8 +37,9 @@ async function check() {
     const names = getDataNames({ country });
     for (const name of names) {
       console.log(`\t${name}:`);
-      const data = await getData({ country, name });
-      await checkData(data);
+      const json = await getData({ country, name });
+      const data = JSON.parse(json);
+      await checkDataLists(data);
     }
   }
 }

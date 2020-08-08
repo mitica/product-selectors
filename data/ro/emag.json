@@ -10,8 +10,9 @@
     {
       "language": "ro",
       "list": {
+        "name": "Latest smartphones",
         "productType": "smartphone",
-        "url": "https://www.emag.ro/telefoane-mobile/c",
+        "url": "https://www.emag.ro/telefoane-mobile/sort-iddesc/c",
         "paginate": {
           "next": "#listing-paginator li:last-child"
         },

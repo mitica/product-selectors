@@ -37,9 +37,8 @@
   "homepage": "https://github.com/mitica/product-selectors#readme",
   "devDependencies": {
     "@types/node": "latest",
-    "@types/node-fetch": "^2.5.7",
     "ava": "^3.11.0",
-    "node-fetch": "^2.6.0",
+    "product-extractor": "^0.1.0",
     "rimraf": "3.0.2",
     "typescript": "latest"
   }
