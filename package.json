@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/node": "latest",
     "ava": "^3.11.0",
-    "product-extractor": "^0.1.0",
+    "product-extractor": "^0.1.2",
     "rimraf": "3.0.2",
     "typescript": "latest"
   }

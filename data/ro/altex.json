@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema-01.json",
+  "version": "01",
+  "country": "ro",
+  "name": "Altex",
+  "url": "https://www.altex.ro/",
+  "currency": "RON",
+
+  "lists": [
+    {
+      "language": "ro",
+      "list": {
+        "name": "Best sale",
+        "productType": "smartphone",
+        "url": "https://altex.ro/telefoane/cpl/filtru/p/1/",
+        "paginate": {
+          "next": ".Toolbar .Toolbar-pager a.Button--forSelect@href"
+        },
+        "item": "ul.Products li.Products-item",
+        "product": {
+          "url": "a.Product-photoTrigger@href",
+          "title": "a.Product-photoTrigger@title",
+          "image": "img.Product-photo@src",
+          "price": {
+            "integerPart": ".Price-int | digits | integer",
+            "decimalPart": ".Price-dec | digits | integer"
+          }
+        }
+      }
+    }
+  ]
+}

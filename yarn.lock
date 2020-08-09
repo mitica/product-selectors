@@ -1858,10 +1858,10 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-product-extractor@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/product-extractor/-/product-extractor-0.1.0.tgz#6ede43d6dfc46205773659935d04edf65508be2c"
-  integrity sha512-mkU2tDgzk4vKLLR0KP6ihsvhKzf/9HEaBm5NKLUggSXlFL69wjYlkEfQIy7MowPCRmNfL78ZaOTmgCpEfXH6qA==
+product-extractor@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/product-extractor/-/product-extractor-0.1.2.tgz#00eb8912cbd9d5e2ba7a15ee06b5aa0bc2c00627"
+  integrity sha512-vyuQw0K+05RWwrx7b+ugDaEW3f3L9LIgmrmpAeU2X2Sthx4+fyBbVsi+RrYHSDDi5VVIzS8f1hWPHXBdzaNQUg==
   dependencies:
     debug "^4.1.1"
     ramda "^0.27.1"
